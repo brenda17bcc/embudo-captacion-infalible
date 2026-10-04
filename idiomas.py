@@ -167,6 +167,34 @@ TEXTOS = {
         "equipo_boton": "🚀 Quiero más información",
         "equipo_gracias": "¡Gracias, {nombre}! 🙌 Te contactaremos pronto "
                           "para contarte más.",
+        "como_funciona": "Cómo funciona",
+        "paso_a_t": "1. Cuéntanos qué pagas",
+        "paso_a_d": "Rellenas el formulario en un minuto, sin compromiso.",
+        "paso_b_t": "2. Comparamos por ti",
+        "paso_b_d": "Revisamos tus servicios y buscamos mejores condiciones.",
+        "paso_c_t": "3. Tú decides",
+        "paso_c_d": "Te llamamos con la propuesta. Si no te convence, "
+                    "no cambias nada.",
+        "sello_seguridad": "🔒 Nunca pedimos datos bancarios, DNI ni contraseñas",
+        "sello_gratis": "✅ Gratis y sin compromiso",
+        "sello_persona": "👤 Te atiende una persona, no un robot",
+        "contacto_directo": "¿Prefieres hablar directamente?",
+        "whatsapp_boton": "💬 Escríbeme por WhatsApp",
+        "wa_mensaje": "Hola, me gustaría información para ahorrar en mis servicios.",
+        "privacidad_titulo": "🔐 Cómo tratamos tus datos",
+        "privacidad_texto": (
+            "**Responsable del tratamiento:** {responsable}\n\n"
+            "**Finalidad:** contactarte para preparar una propuesta de ahorro "
+            "personalizada o informarte sobre la oportunidad profesional.\n\n"
+            "**Base legal:** tu consentimiento, que puedes retirar cuando "
+            "quieras.\n\n"
+            "**Conservación:** guardamos tus datos mientras dure la relación o "
+            "hasta que solicites su supresión.\n\n"
+            "**Cesiones:** no vendemos tus datos ni los cedemos a terceros "
+            "ajenos a la gestión de tu propuesta.\n\n"
+            "**Tus derechos:** puedes acceder, rectificar, suprimir u oponerte "
+            "al tratamiento escribiendo a {email}."
+        ),
     },
     # ------------------------------------------------ CATALÁN
     "ca": {
@@ -231,6 +259,35 @@ TEXTOS = {
         "equipo_boton": "🚀 Vull més informació",
         "equipo_gracias": "Gràcies, {nombre}! 🙌 Et contactarem aviat "
                           "per explicar-te'n més.",
+        "como_funciona": "Com funciona",
+        "paso_a_t": "1. Digues-nos què pagues",
+        "paso_a_d": "Omples el formulari en un minut, sense compromís.",
+        "paso_b_t": "2. Comparem per tu",
+        "paso_b_d": "Revisem els teus serveis i busquem millors condicions.",
+        "paso_c_t": "3. Tu decideixes",
+        "paso_c_d": "Et truquem amb la proposta. Si no et convenç, "
+                    "no canvies res.",
+        "sello_seguridad": "🔒 Mai demanem dades bancàries, DNI ni contrasenyes",
+        "sello_gratis": "✅ Gratuït i sense compromís",
+        "sello_persona": "👤 T'atén una persona, no un robot",
+        "contacto_directo": "Prefereixes parlar directament?",
+        "whatsapp_boton": "💬 Escriu-me per WhatsApp",
+        "wa_mensaje": "Hola, m'agradaria informació per estalviar en els meus "
+                      "serveis.",
+        "privacidad_titulo": "🔐 Com tractem les teves dades",
+        "privacidad_texto": (
+            "**Responsable del tractament:** {responsable}\n\n"
+            "**Finalitat:** contactar-te per preparar una proposta d'estalvi "
+            "personalitzada o informar-te sobre l'oportunitat professional.\n\n"
+            "**Base legal:** el teu consentiment, que pots retirar quan "
+            "vulguis.\n\n"
+            "**Conservació:** guardem les teves dades mentre duri la relació o "
+            "fins que en sol·licitis la supressió.\n\n"
+            "**Cessions:** no venem les teves dades ni les cedim a tercers "
+            "aliens a la gestió de la teva proposta.\n\n"
+            "**Els teus drets:** pots accedir, rectificar, suprimir o oposar-te "
+            "al tractament escrivint a {email}."
+        ),
     },
     # ------------------------------------------------ INGLÉS
     "en": {
@@ -293,6 +350,34 @@ TEXTOS = {
         "equipo_boton": "🚀 I want more information",
         "equipo_gracias": "Thank you, {nombre}! 🙌 We'll contact you soon "
                           "to tell you more.",
+        "como_funciona": "How it works",
+        "paso_a_t": "1. Tell us what you pay",
+        "paso_a_d": "Fill in the form in one minute, with no obligation.",
+        "paso_b_t": "2. We compare for you",
+        "paso_b_d": "We review your services and look for better conditions.",
+        "paso_c_t": "3. You decide",
+        "paso_c_d": "We call you with the proposal. If you don't like it, "
+                    "nothing changes.",
+        "sello_seguridad": "🔒 We never ask for bank details, ID or passwords",
+        "sello_gratis": "✅ Free and with no obligation",
+        "sello_persona": "👤 A real person, not a bot",
+        "contacto_directo": "Prefer to talk directly?",
+        "whatsapp_boton": "💬 Message me on WhatsApp",
+        "wa_mensaje": "Hello, I would like information about saving on my services.",
+        "privacidad_titulo": "🔐 How we handle your data",
+        "privacidad_texto": (
+            "**Data controller:** {responsable}\n\n"
+            "**Purpose:** to contact you to prepare a personalised savings "
+            "proposal or to tell you about the professional opportunity.\n\n"
+            "**Legal basis:** your consent, which you may withdraw at any "
+            "time.\n\n"
+            "**Retention:** we keep your data for as long as the relationship "
+            "lasts or until you ask us to delete it.\n\n"
+            "**Sharing:** we do not sell your data or share it with third "
+            "parties outside the handling of your proposal.\n\n"
+            "**Your rights:** you may access, correct, delete or object to the "
+            "processing of your data by writing to {email}."
+        ),
     },
     # ------------------------------------------------ PORTUGUÉS
     "pt": {
@@ -358,6 +443,35 @@ TEXTOS = {
         "equipo_boton": "🚀 Quero mais informações",
         "equipo_gracias": "Obrigado, {nombre}! 🙌 Entraremos em contacto em breve "
                           "para lhe contar mais.",
+        "como_funciona": "Como funciona",
+        "paso_a_t": "1. Diga-nos quanto paga",
+        "paso_a_d": "Preenche o formulário num minuto, sem compromisso.",
+        "paso_b_t": "2. Comparamos por si",
+        "paso_b_d": "Analisamos os seus serviços e procuramos melhores condições.",
+        "paso_c_t": "3. Você decide",
+        "paso_c_d": "Ligamos-lhe com a proposta. Se não gostar, "
+                    "não muda nada.",
+        "sello_seguridad": "🔒 Nunca pedimos dados bancários, documentos "
+                           "de identificação nem palavras-passe",
+        "sello_gratis": "✅ Gratuito e sem compromisso",
+        "sello_persona": "👤 Atende-o uma pessoa, não um robô",
+        "contacto_directo": "Prefere falar diretamente?",
+        "whatsapp_boton": "💬 Fale comigo pelo WhatsApp",
+        "wa_mensaje": "Olá, gostaria de informações para poupar nos meus serviços.",
+        "privacidad_titulo": "🔐 Como tratamos os seus dados",
+        "privacidad_texto": (
+            "**Responsável pelo tratamento:** {responsable}\n\n"
+            "**Finalidade:** contactá-lo para preparar uma proposta de poupança "
+            "personalizada ou informá-lo sobre a oportunidade profissional.\n\n"
+            "**Base legal:** o seu consentimento, que pode retirar a qualquer "
+            "momento.\n\n"
+            "**Conservação:** guardamos os seus dados enquanto durar a relação "
+            "ou até que solicite a sua eliminação.\n\n"
+            "**Partilha:** não vendemos os seus dados nem os cedemos a "
+            "terceiros alheios à gestão da sua proposta.\n\n"
+            "**Os seus direitos:** pode aceder, retificar, eliminar ou opor-se "
+            "ao tratamento escrevendo para {email}."
+        ),
     },
     # ------------------------------------------------ FRANCÉS
     "fr": {
@@ -424,6 +538,40 @@ TEXTOS = {
         "equipo_boton": "🚀 Je veux plus d'informations",
         "equipo_gracias": "Merci, {nombre} ! 🙌 Nous vous contacterons bientôt "
                           "pour vous en dire plus.",
+        "como_funciona": "Comment ça marche",
+        "paso_a_t": "1. Dites-nous ce que vous payez",
+        "paso_a_d": "Vous remplissez le formulaire en une minute, sans engagement.",
+        "paso_b_t": "2. Nous comparons pour vous",
+        "paso_b_d": "Nous étudions vos services et cherchons de meilleures "
+                    "conditions.",
+        "paso_c_t": "3. Vous décidez",
+        "paso_c_d": "Nous vous appelons avec la proposition. Si elle ne vous "
+                    "convient pas, rien ne change.",
+        "sello_seguridad": "🔒 Nous ne demandons jamais vos coordonnées "
+                           "bancaires, pièce d'identité ou mots de passe",
+        "sello_gratis": "✅ Gratuit et sans engagement",
+        "sello_persona": "👤 Une vraie personne, pas un robot",
+        "contacto_directo": "Vous préférez parler directement ?",
+        "whatsapp_boton": "💬 Écrivez-moi sur WhatsApp",
+        "wa_mensaje": "Bonjour, je souhaiterais des informations pour économiser "
+                      "sur mes services.",
+        "privacidad_titulo": "🔐 Comment nous traitons vos données",
+        "privacidad_texto": (
+            "**Responsable du traitement :** {responsable}\n\n"
+            "**Finalité :** vous contacter pour préparer une proposition "
+            "d'économies personnalisée ou vous informer sur l'opportunité "
+            "professionnelle.\n\n"
+            "**Base légale :** votre consentement, que vous pouvez retirer à "
+            "tout moment.\n\n"
+            "**Conservation :** nous conservons vos données pendant la durée de "
+            "la relation ou jusqu'à votre demande de suppression.\n\n"
+            "**Transmission :** nous ne vendons pas vos données et ne les "
+            "cédons pas à des tiers étrangers à la gestion de votre "
+            "proposition.\n\n"
+            "**Vos droits :** vous pouvez accéder à vos données, les rectifier, "
+            "les supprimer ou vous opposer à leur traitement en écrivant à "
+            "{email}."
+        ),
     },
     # ------------------------------------------------ ITALIANO
     "it": {
@@ -487,6 +635,35 @@ TEXTOS = {
         "equipo_boton": "🚀 Voglio più informazioni",
         "equipo_gracias": "Grazie, {nombre}! 🙌 Ti contatteremo presto "
                           "per dirti di più.",
+        "como_funciona": "Come funziona",
+        "paso_a_t": "1. Dicci quanto paghi",
+        "paso_a_d": "Compili il modulo in un minuto, senza impegno.",
+        "paso_b_t": "2. Confrontiamo per te",
+        "paso_b_d": "Esaminiamo i tuoi servizi e cerchiamo condizioni migliori.",
+        "paso_c_t": "3. Decidi tu",
+        "paso_c_d": "Ti chiamiamo con la proposta. Se non ti convince, "
+                    "non cambia nulla.",
+        "sello_seguridad": "🔒 Non chiediamo mai dati bancari, documenti "
+                           "d'identità o password",
+        "sello_gratis": "✅ Gratuito e senza impegno",
+        "sello_persona": "👤 Ti risponde una persona, non un robot",
+        "contacto_directo": "Preferisci parlare direttamente?",
+        "whatsapp_boton": "💬 Scrivimi su WhatsApp",
+        "wa_mensaje": "Ciao, vorrei informazioni per risparmiare sui miei servizi.",
+        "privacidad_titulo": "🔐 Come trattiamo i tuoi dati",
+        "privacidad_texto": (
+            "**Titolare del trattamento:** {responsable}\n\n"
+            "**Finalità:** contattarti per preparare una proposta di risparmio "
+            "personalizzata o informarti sull'opportunità professionale.\n\n"
+            "**Base giuridica:** il tuo consenso, che puoi revocare in "
+            "qualsiasi momento.\n\n"
+            "**Conservazione:** conserviamo i tuoi dati per la durata del "
+            "rapporto o fino a quando ne chiedi la cancellazione.\n\n"
+            "**Comunicazione a terzi:** non vendiamo i tuoi dati né li cediamo "
+            "a terzi estranei alla gestione della tua proposta.\n\n"
+            "**I tuoi diritti:** puoi accedere, rettificare, cancellare o "
+            "opporti al trattamento scrivendo a {email}."
+        ),
     },
     # ------------------------------------------------ ALEMÁN
     "de": {
@@ -553,6 +730,38 @@ TEXTOS = {
         "equipo_boton": "🚀 Ich möchte mehr Informationen",
         "equipo_gracias": "Danke, {nombre}! 🙌 Wir melden uns bald, "
                           "um Ihnen mehr zu erzählen.",
+        "como_funciona": "So funktioniert es",
+        "paso_a_t": "1. Sagen Sie uns, was Sie zahlen",
+        "paso_a_d": "Sie füllen das Formular in einer Minute aus, unverbindlich.",
+        "paso_b_t": "2. Wir vergleichen für Sie",
+        "paso_b_d": "Wir prüfen Ihre Verträge und suchen bessere Konditionen.",
+        "paso_c_t": "3. Sie entscheiden",
+        "paso_c_d": "Wir rufen Sie mit dem Angebot an. Überzeugt es nicht, "
+                    "ändert sich nichts.",
+        "sello_seguridad": "🔒 Wir fragen nie nach Bankdaten, Ausweis "
+                           "oder Passwörtern",
+        "sello_gratis": "✅ Kostenlos und unverbindlich",
+        "sello_persona": "👤 Ein echter Mensch, kein Bot",
+        "contacto_directo": "Möchten Sie lieber direkt sprechen?",
+        "whatsapp_boton": "💬 Schreiben Sie mir per WhatsApp",
+        "wa_mensaje": "Hallo, ich hätte gern Informationen, um bei meinen "
+                      "Verträgen zu sparen.",
+        "privacidad_titulo": "🔐 So gehen wir mit Ihren Daten um",
+        "privacidad_texto": (
+            "**Verantwortlicher:** {responsable}\n\n"
+            "**Zweck:** Sie zu kontaktieren, um ein persönliches Sparangebot zu "
+            "erstellen oder Sie über die berufliche Gelegenheit zu "
+            "informieren.\n\n"
+            "**Rechtsgrundlage:** Ihre Einwilligung, die Sie jederzeit "
+            "widerrufen können.\n\n"
+            "**Speicherdauer:** Wir speichern Ihre Daten für die Dauer der "
+            "Geschäftsbeziehung oder bis Sie deren Löschung verlangen.\n\n"
+            "**Weitergabe:** Wir verkaufen Ihre Daten nicht und geben sie nicht "
+            "an Dritte außerhalb der Bearbeitung Ihres Angebots weiter.\n\n"
+            "**Ihre Rechte:** Sie können Ihre Daten einsehen, berichtigen, "
+            "löschen oder der Verarbeitung widersprechen, indem Sie an {email} "
+            "schreiben."
+        ),
     },
 }
 
