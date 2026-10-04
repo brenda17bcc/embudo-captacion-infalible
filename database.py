@@ -10,11 +10,19 @@ def ahora():
     return datetime.now().strftime("%Y-%m-%d %H:%M")
 
 
+def columna_si_falta(conn, tabla, columna, tipo="TEXT"):
+    """Añade una columna a una tabla solo si todavía no existe.
+    Esto se llama 'migración': cambia la estructura sin perder los datos."""
+    columnas = [fila[1] for fila in conn.execute(f"PRAGMA table_info({tabla})")]
+    if columna not in columnas:
+        conn.execute(f"ALTER TABLE {tabla} ADD COLUMN {columna} {tipo}")
+
+
 def crear_tabla():
-    """Crea las tablas 'contactos' y 'candidatos' si no existen."""
+    """Crea las tablas si no existen y las actualiza si les falta alguna columna."""
     conn = sqlite3.connect(DB_PATH)
 
-    # Tabla de clientes que quieren ahorrar
+    # Clientes que quieren ahorrar
     conn.execute("""
         CREATE TABLE IF NOT EXISTS contactos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -31,7 +39,7 @@ def crear_tabla():
         )
     """)
 
-    # Tabla de personas que quieren unirse al equipo
+    # Personas que quieren unirse al equipo
     conn.execute("""
         CREATE TABLE IF NOT EXISTS candidatos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -49,25 +57,31 @@ def crear_tabla():
         )
     """)
 
+    # Columnas añadidas después (migración)
+    columna_si_falta(conn, "contactos", "idioma")
+    columna_si_falta(conn, "candidatos", "idioma")
+
     conn.commit()
     conn.close()
 
 
-def guardar_contacto(nombre, telefono, email, ciudad, horario, pagos, consentimiento):
+def guardar_contacto(nombre, telefono, email, ciudad, horario,
+                     pagos, consentimiento, idioma="es"):
     """Guarda un cliente interesado en ahorrar."""
     conn = sqlite3.connect(DB_PATH)
     conn.execute(
         """
         INSERT INTO contactos
         (fecha, nombre, telefono, email, ciudad, horario,
-         servicios, gasto_mensual, consentimiento)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+         servicios, gasto_mensual, consentimiento, idioma)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
             ahora(), nombre, telefono, email, ciudad, horario,
             json.dumps(pagos, ensure_ascii=False),
             sum(pagos.values()),
             int(consentimiento),
+            idioma,
         ),
     )
     conn.commit()
@@ -75,19 +89,21 @@ def guardar_contacto(nombre, telefono, email, ciudad, horario, pagos, consentimi
 
 
 def guardar_candidato(nombre, telefono, email, ciudad, situacion,
-                      experiencia, disponibilidad, mensaje, consentimiento):
+                      experiencia, disponibilidad, mensaje,
+                      consentimiento, idioma="es"):
     """Guarda una persona interesada en unirse al equipo."""
     conn = sqlite3.connect(DB_PATH)
     conn.execute(
         """
         INSERT INTO candidatos
         (fecha, nombre, telefono, email, ciudad, situacion,
-         experiencia, disponibilidad, mensaje, consentimiento)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+         experiencia, disponibilidad, mensaje, consentimiento, idioma)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
             ahora(), nombre, telefono, email, ciudad, situacion,
-            experiencia, disponibilidad, mensaje, int(consentimiento),
+            experiencia, disponibilidad, mensaje,
+            int(consentimiento), idioma,
         ),
     )
     conn.commit()
