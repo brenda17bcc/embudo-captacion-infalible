@@ -106,6 +106,13 @@ SERVICIOS = {
 TEXTOS = {
     # ------------------------------------------------ CASTELLANO
     "es": {
+        "compania": "¿Con qué compañía estás ahora?",
+        "otra": "Otra",
+        "no_lo_se": "No lo sé",
+        "ahorro_titulo": "💰 Tu ahorro estimado",
+        "ahorro_rango": "Podrías ahorrar entre **{minimo} €** y **{maximo} € al año**.",
+        "ahorro_aviso": "Estimación orientativa calculada sobre lo que nos has indicado. La cifra exacta depende de tu contrato y se confirma tras el estudio, que es gratuito y sin compromiso.",
+        "ahorro_cta": "👇 Déjanos tus datos y te lo confirmamos con números reales.",
         "idioma_label": "🌍 Idioma",
         "titulo": "💡 ¿Estás pagando de más?",
         "subtitulo": "Compara y ahorra en tus servicios del hogar",
@@ -198,6 +205,13 @@ TEXTOS = {
     },
     # ------------------------------------------------ CATALÁN
     "ca": {
+        "compania": "Amb quina companyia estàs ara?",
+        "otra": "Una altra",
+        "no_lo_se": "No ho sé",
+        "ahorro_titulo": "💰 El teu estalvi estimat",
+        "ahorro_rango": "Podries estalviar entre **{minimo} €** i **{maximo} € l'any**.",
+        "ahorro_aviso": "Estimació orientativa calculada amb el que ens has indicat. La xifra exacta depèn del teu contracte i es confirma després de l'estudi, que és gratuït i sense compromís.",
+        "ahorro_cta": "👇 Deixa'ns les teves dades i t'ho confirmem amb números reals.",
         "idioma_label": "🌍 Idioma",
         "titulo": "💡 Estàs pagant de més?",
         "subtitulo": "Compara i estalvia en els teus serveis de la llar",
@@ -291,6 +305,13 @@ TEXTOS = {
     },
     # ------------------------------------------------ INGLÉS
     "en": {
+        "compania": "Who is your current provider?",
+        "otra": "Other",
+        "no_lo_se": "I don't know",
+        "ahorro_titulo": "💰 Your estimated saving",
+        "ahorro_rango": "You could save between **€{minimo}** and **€{maximo} a year**.",
+        "ahorro_aviso": "This is an estimate based on what you told us. The exact figure depends on your contract and is confirmed after the review, which is free and with no obligation.",
+        "ahorro_cta": "👇 Leave us your details and we'll confirm it with real numbers.",
         "idioma_label": "🌍 Language",
         "titulo": "💡 Are you paying too much?",
         "subtitulo": "Compare and save on your household services",
@@ -381,6 +402,13 @@ TEXTOS = {
     },
     # ------------------------------------------------ PORTUGUÉS
     "pt": {
+        "compania": "Com que companhia está agora?",
+        "otra": "Outra",
+        "no_lo_se": "Não sei",
+        "ahorro_titulo": "💰 A sua poupança estimada",
+        "ahorro_rango": "Poderia poupar entre **{minimo} €** e **{maximo} € por ano**.",
+        "ahorro_aviso": "Estimativa orientativa calculada com o que nos indicou. O valor exato depende do seu contrato e confirma-se após o estudo, que é gratuito e sem compromisso.",
+        "ahorro_cta": "👇 Deixe-nos os seus dados e confirmamos com números reais.",
         "idioma_label": "🌍 Idioma",
         "titulo": "💡 Está a pagar demais?",
         "subtitulo": "Compare e poupe nos seus serviços domésticos",
@@ -475,6 +503,13 @@ TEXTOS = {
     },
     # ------------------------------------------------ FRANCÉS
     "fr": {
+        "compania": "Chez quel fournisseur êtes-vous actuellement ?",
+        "otra": "Autre",
+        "no_lo_se": "Je ne sais pas",
+        "ahorro_titulo": "💰 Votre économie estimée",
+        "ahorro_rango": "Vous pourriez économiser entre **{minimo} €** et **{maximo} € par an**.",
+        "ahorro_aviso": "Estimation indicative calculée à partir de vos réponses. Le montant exact dépend de votre contrat et se confirme après l'étude, qui est gratuite et sans engagement.",
+        "ahorro_cta": "👇 Laissez-nous vos coordonnées et nous le confirmons avec des chiffres réels.",
         "idioma_label": "🌍 Langue",
         "titulo": "💡 Vous payez trop cher ?",
         "subtitulo": "Comparez et économisez sur vos services du quotidien",
@@ -575,6 +610,13 @@ TEXTOS = {
     },
     # ------------------------------------------------ ITALIANO
     "it": {
+        "compania": "Con quale compagnia sei adesso?",
+        "otra": "Altra",
+        "no_lo_se": "Non lo so",
+        "ahorro_titulo": "💰 Il tuo risparmio stimato",
+        "ahorro_rango": "Potresti risparmiare tra **{minimo} €** e **{maximo} € all'anno**.",
+        "ahorro_aviso": "Stima indicativa calcolata su quanto ci hai indicato. La cifra esatta dipende dal tuo contratto e si conferma dopo l'analisi, che è gratuita e senza impegno.",
+        "ahorro_cta": "👇 Lasciaci i tuoi dati e te lo confermiamo con numeri reali.",
         "idioma_label": "🌍 Lingua",
         "titulo": "💡 Stai pagando troppo?",
         "subtitulo": "Confronta e risparmia sui servizi di casa",
@@ -667,6 +709,13 @@ TEXTOS = {
     },
     # ------------------------------------------------ ALEMÁN
     "de": {
+        "compania": "Bei welchem Anbieter sind Sie derzeit?",
+        "otra": "Anderer",
+        "no_lo_se": "Weiß ich nicht",
+        "ahorro_titulo": "💰 Ihre geschätzte Ersparnis",
+        "ahorro_rango": "Sie könnten zwischen **{minimo} €** und **{maximo} € pro Jahr** sparen.",
+        "ahorro_aviso": "Unverbindliche Schätzung auf Basis Ihrer Angaben. Der genaue Betrag hängt von Ihrem Vertrag ab und wird nach der Prüfung bestätigt, die kostenlos und unverbindlich ist.",
+        "ahorro_cta": "👇 Hinterlassen Sie uns Ihre Daten und wir bestätigen es mit echten Zahlen.",
         "idioma_label": "🌍 Sprache",
         "titulo": "💡 Zahlen Sie zu viel?",
         "subtitulo": "Vergleichen und sparen Sie bei Ihren Haushaltsdiensten",

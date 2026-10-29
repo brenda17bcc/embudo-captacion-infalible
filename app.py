@@ -20,6 +20,8 @@ from database import (crear_tabla, guardar_contacto, guardar_candidato,
                       guardar_inmueble)
 from idiomas import IDIOMAS, PREFIJOS, CLAVES_SERVICIOS, SERVICIOS, t, servicios
 from idiomas_inmo import ti
+from companias import companias_de, ahorro_de
+from iconos import icono
 
 # ---------- CONFIGURACIÓN ----------
 st.set_page_config(
@@ -53,6 +55,21 @@ if _logo_barra:
         f'</div>',
         unsafe_allow_html=True,
     )
+
+
+# ---------- ICONOS FLOTANDO DE FONDO ----------
+st.markdown(
+    '<div class="fondo-flotante">'
+    + "".join(
+        f'<span style="left:{izq}%; top:{arr}%;">{icono(clave, tam)}</span>'
+        for clave, izq, arr, tam in [
+            ("luz", 4, 18, 70), ("internet", 90, 30, 60), ("coche", 8, 70, 80),
+            ("hipoteca", 86, 72, 75), ("movil", 50, 92, 55),
+        ]
+    )
+    + "</div>",
+    unsafe_allow_html=True,
+)
 
 
 # ---------- FUNCIONES AUXILIARES ----------
@@ -184,7 +201,7 @@ idioma = IDIOMAS[idioma_elegido]
 # Al cambiar de idioma limpiamos lo elegido: estaba guardado en el idioma anterior
 if st.session_state.get("idioma_actual") != idioma:
     st.session_state["idioma_actual"] = idioma
-    st.session_state["servicios"] = []
+    st.session_state["servicios_claves"] = []
     st.session_state.pop("modo", None)
 
 # ---------- CABECERA (cambia según el embudo elegido) ----------
@@ -266,7 +283,7 @@ if modo == OPCIONES_MODO[0]:
     st.markdown("")
 
     # ---------- BARRA DE PROGRESO ----------
-    if not st.session_state.get("servicios", []):
+    if not st.session_state.get("servicios_claves", []):
         avance, etiqueta = 0.10, t(idioma, "prog1")
     elif not st.session_state.get("contacto_enviado", False):
         avance, etiqueta = 0.55, t(idioma, "prog2")
@@ -278,14 +295,33 @@ if modo == OPCIONES_MODO[0]:
     # ---------- PASO 1: SERVICIOS ----------
     st.markdown(f"### {t(idioma, 'paso1_titulo')}")
 
-    opciones = servicios(idioma)
     traducciones = SERVICIOS.get(idioma, SERVICIOS["es"])
     etiqueta_a_clave = {traducciones[clave]: clave for clave in CLAVES_SERVICIOS}
 
-    seleccion = st.multiselect(
-        t(idioma, "elige"), opciones, key="servicios",
-        placeholder=t(idioma, "placeholder")
-    )
+    st.caption(t(idioma, "elige"))
+
+    # Cada tarjeta es un botón entero: un clic la enciende o la apaga
+    elegidas = st.session_state.setdefault("servicios_claves", [])
+
+    for fila in range(0, len(CLAVES_SERVICIOS), 4):
+        columnas = st.columns(4)
+        for columna, clave in zip(columnas, CLAVES_SERVICIOS[fila:fila + 4]):
+            nombre = traducciones[clave].split(" ", 1)[-1]
+            activa = clave in elegidas
+            with columna:
+                if st.button(
+                    f"{nombre}  ✓" if activa else nombre,
+                    key=f"serv_{clave}",
+                    use_container_width=True,
+                    type="primary" if activa else "secondary",
+                ):
+                    if activa:
+                        elegidas.remove(clave)
+                    else:
+                        elegidas.append(clave)
+                    st.rerun()
+
+    seleccion = [traducciones[c] for c in CLAVES_SERVICIOS if c in elegidas]
 
     if not seleccion:
         st.info(t(idioma, "aviso_elige"))
@@ -295,20 +331,60 @@ if modo == OPCIONES_MODO[0]:
         st.caption(t(idioma, "aprox"))
 
         pagos = {}
+        companias_elegidas = {}
+        ahorro_min = ahorro_max = 0.0
+
         for etiqueta_visible in seleccion:
             clave = etiqueta_a_clave[etiqueta_visible]
             nombre_es = SERVICIOS["es"][clave]
-            pagos[nombre_es] = st.number_input(
-                f"{etiqueta_visible} (€/mes)",
-                min_value=0.0, step=5.0, key=f"pago_{clave}"
-            )
+
+            with st.container(border=True):
+                st.markdown(f"**{etiqueta_visible}**")
+
+                pago = st.number_input(
+                    "€/mes", min_value=0.0, step=5.0,
+                    key=f"pago_{clave}", label_visibility="collapsed"
+                )
+                pagos[nombre_es] = pago
+
+                opciones = companias_de(
+                    clave, t(idioma, "otra"), t(idioma, "no_lo_se")
+                )
+                if hasattr(st, "pills"):
+                    elegida = st.pills(
+                        t(idioma, "compania"), opciones, key=f"comp_{clave}"
+                    )
+                else:
+                    elegida = st.selectbox(
+                        t(idioma, "compania"), opciones, index=None,
+                        key=f"comp_{clave}"
+                    )
+                companias_elegidas[nombre_es] = elegida or ""
+
+            minimo, maximo = ahorro_de(clave, pago)
+            ahorro_min += minimo
+            ahorro_max += maximo
 
         total_mensual = sum(pagos.values())
         if total_mensual > 0:
             col1, col2 = st.columns(2)
             col1.metric(t(idioma, "pagas_mes"), f"{total_mensual:,.0f} €")
             col2.metric(t(idioma, "pagas_anio"), f"{total_mensual * 12:,.0f} €")
-            st.caption(t(idioma, "veamos"))
+
+            if ahorro_max > 0:
+                st.markdown(f"#### {t(idioma, 'ahorro_titulo')}")
+                st.success(
+                    t(idioma, "ahorro_rango").format(
+                        minimo=f"{ahorro_min:,.0f}", maximo=f"{ahorro_max:,.0f}"
+                    )
+                )
+                st.progress(
+                    min(ahorro_max / (total_mensual * 12), 1.0),
+                    text=t(idioma, "ahorro_cta"),
+                )
+                st.caption(t(idioma, "ahorro_aviso"))
+            else:
+                st.caption(t(idioma, "veamos"))
 
         # ---------- PASO 3: CONTACTO ----------
         st.markdown(f"### {t(idioma, 'paso3_titulo')}")
@@ -342,6 +418,7 @@ if modo == OPCIONES_MODO[0]:
                     pagos=pagos,
                     consentimiento=acepta,
                     idioma=idioma,
+                    companias=companias_elegidas,
                 )
                 st.session_state["contacto_enviado"] = True
                 st.session_state["nombre_cliente"] = primer_nombre(nombre)

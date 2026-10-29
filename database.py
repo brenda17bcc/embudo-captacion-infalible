@@ -81,6 +81,7 @@ def crear_tabla():
     """)
 
     columna_si_falta(conn, "contactos", "idioma")
+    columna_si_falta(conn, "contactos", "companias")
     columna_si_falta(conn, "inmuebles", "detalles")
     columna_si_falta(conn, "candidatos", "idioma")
 
@@ -89,15 +90,19 @@ def crear_tabla():
 
 
 def guardar_contacto(nombre, telefono, email, ciudad, horario,
-                     pagos, consentimiento, idioma="es"):
-    """Guarda un cliente interesado en ahorrar."""
+                     pagos, consentimiento, idioma="es", companias=None):
+    """Guarda un cliente interesado en ahorrar.
+
+    'companias' es un diccionario {servicio: compañía actual}, muy útil para
+    que el asesor sepa de dónde viene cada contacto antes de llamar.
+    """
     conn = sqlite3.connect(DB_PATH)
     conn.execute(
         """
         INSERT INTO contactos
         (fecha, nombre, telefono, email, ciudad, horario,
-         servicios, gasto_mensual, consentimiento, idioma)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+         servicios, gasto_mensual, consentimiento, idioma, companias)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
             ahora(), nombre, telefono, email, ciudad, horario,
@@ -105,6 +110,7 @@ def guardar_contacto(nombre, telefono, email, ciudad, horario,
             sum(pagos.values()),
             int(consentimiento),
             idioma,
+            json.dumps(companias or {}, ensure_ascii=False),
         ),
     )
     conn.commit()

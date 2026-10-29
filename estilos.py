@@ -9,6 +9,8 @@ VERDE_MARCA = "#1F3C33"
 DORADO_MARCA = "#BF8A2E"
 CREMA_MARCA = "#F6F4EC"
 
+from iconos import ICONOS, icono_css
+
 PALETAS = {
     # Los colores del logo, tal cual. La más fiel a la marca.
     "marca": {
@@ -85,6 +87,16 @@ def css(p, marca_agua=None):
     """
     # En la paleta oscura los campos siguen siendo blancos: el texto va oscuro
     texto_campo = p.get("texto_campo") or "#1C2A24"
+
+    # un icono distinto para cada servicio, en verde si está apagado
+    # y en dorado si está encendido
+    iconos_css = "\n".join(
+        f'[class*="st-key-serv_{clave}"] button::before '
+        f'{{background-image: {icono_css(clave, p["primario"])};}}\n'
+        f'[class*="st-key-serv_{clave}"] button[kind="primary"]::before '
+        f'{{background-image: {icono_css(clave, p["acento"])};}}'
+        for clave in ICONOS
+    )
     fondo_marca_agua = ""
     if marca_agua:
         fondo_marca_agua = f"""
@@ -316,11 +328,79 @@ input, textarea, [data-baseweb="input"] *, [data-baseweb="select"] *,
     border-radius: 12px;
 }}
 
+/* ---------- TARJETAS DE SERVICIO (toda la tarjeta es el botón) ---------- */
+[class*="st-key-serv_"] button {{
+    background: {p['tarjeta']} !important;
+    border: 2px solid {p['borde']} !important;
+    border-radius: 16px !important;
+    height: 118px;
+    padding: 12px 6px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}}
+[class*="st-key-serv_"] button::before {{
+    content: "";
+    display: block;
+    width: 38px; height: 38px;
+    margin: 0 auto 10px auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}}
+[class*="st-key-serv_"] button p {{
+    color: {p['texto']} !important;
+    font-size: .85rem !important;
+    font-weight: 600 !important;
+    line-height: 1.15;
+}}
+[class*="st-key-serv_"] button:hover {{
+    transform: translateY(-4px);
+    border-color: {p['detalle']} !important;
+    box-shadow: 0 10px 22px rgba(0,0,0,.12);
+}}
+[class*="st-key-serv_"] button[kind="primary"] {{
+    border-color: {p['acento']} !important;
+    border-width: 3px !important;
+    background: {p['fondo']} !important;
+}}
+[class*="st-key-serv_"] button[kind="primary"] p {{
+    color: {p['acento']} !important;
+    font-weight: 700 !important;
+}}
+{iconos_css}
+/* ---------- ICONOS FLOTANDO DE FONDO ---------- */
+@keyframes flotar {{
+    0%   {{ transform: translateY(0) rotate(0deg); }}
+    50%  {{ transform: translateY(-18px) rotate(4deg); }}
+    100% {{ transform: translateY(0) rotate(0deg); }}
+}}
+.fondo-flotante {{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}}
+.fondo-flotante span {{
+    position: absolute;
+    color: {p['primario']};
+    opacity: .07;
+    animation: flotar 9s ease-in-out infinite;
+}}
+.fondo-flotante span:nth-child(2) {{ animation-duration: 12s; animation-delay: 1s; }}
+.fondo-flotante span:nth-child(3) {{ animation-duration: 15s; animation-delay: 2s; }}
+.fondo-flotante span:nth-child(4) {{ animation-duration: 11s; animation-delay: .5s; }}
+.fondo-flotante span:nth-child(5) {{ animation-duration: 14s; animation-delay: 3s; }}
+
 /* ---------- MÓVIL ---------- */
 @media (max-width: 640px) {{
     h1 {{ font-size: 1.65rem !important; }}
     .block-container {{ padding-left: 1rem; padding-right: 1rem; }}
     .stApp::before {{ display: none; }}
+    .fondo-flotante {{ display: none; }}
+    .rejilla-servicios {{ grid-template-columns: repeat(2, 1fr); }}
 }}
 </style>
 """
