@@ -8,16 +8,14 @@ Se arranca aparte de la web pública:
 """
 
 import json
-import sqlite3
 from io import BytesIO
 
 import pandas as pd
 import streamlit as st
 
 import config
+import database
 from estilos import obtener_paleta, css
-
-DB_PATH = "contactos.db"
 ESTADOS = ["Nuevo", "Contactado", "Propuesta enviada", "Cliente", "Descartado"]
 
 # ---------- CONFIGURACIÓN ----------
@@ -81,22 +79,13 @@ def pedir_clave():
 # ---------- DATOS ----------
 def leer_tabla(nombre):
     """Carga una tabla de la base de datos en una tabla de pandas."""
-    conn = sqlite3.connect(DB_PATH)
-    try:
-        datos = pd.read_sql_query(f"SELECT * FROM {nombre} ORDER BY id DESC", conn)
-    except Exception:
-        datos = pd.DataFrame()
-    conn.close()
-    return datos
+    return pd.DataFrame(database.leer_tabla(nombre))
 
 
 def guardar_estados(tabla, cambios):
     """Guarda en la base de datos los estados que se hayan modificado."""
-    conn = sqlite3.connect(DB_PATH)
     for fila_id, estado in cambios:
-        conn.execute(f"UPDATE {tabla} SET estado = ? WHERE id = ?", (estado, fila_id))
-    conn.commit()
-    conn.close()
+        database.cambiar_estado(tabla, fila_id, estado)
 
 
 def a_excel(hojas):
@@ -222,12 +211,13 @@ if pedir_clave():
     col_titulo, col_salir = st.columns([5, 1])
     with col_titulo:
         st.title(f"📊 Panel de {config.MARCA}")
-        st.caption("Contactos recibidos desde el embudo")
+        st.caption(f"Contactos recibidos desde el embudo · {database.donde_guarda()}")
     with col_salir:
         if st.button("Cerrar sesión"):
             st.session_state["acceso_ok"] = False
             st.rerun()
 
+    database.crear_tabla()
     contactos = leer_tabla("contactos")
     candidatos = leer_tabla("candidatos")
     inmuebles = leer_tabla("inmuebles")

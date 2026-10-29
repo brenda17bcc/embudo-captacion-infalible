@@ -1,34 +1,20 @@
-"""Herramienta para revisar lo que se ha guardado en la base de datos."""
+"""Herramienta rápida para revisar lo guardado, desde el CMD."""
 
-import sqlite3
+import database
 
-conn = sqlite3.connect("contactos.db")
+database.crear_tabla()
+print("Guardando en:", database.donde_guarda(), "\n")
 
-clientes = conn.execute(
-    "SELECT id, fecha, nombre, telefono, servicios, gasto_mensual, idioma, estado "
-    "FROM contactos"
-).fetchall()
-
-candidatos = conn.execute(
-    "SELECT id, fecha, nombre, telefono, situacion, disponibilidad, idioma, estado "
-    "FROM candidatos"
-).fetchall()
-
-inmuebles = conn.execute(
-    "SELECT id, fecha, nombre, telefono, operacion, tipo, zona, importe, "
-    "idioma, estado FROM inmuebles"
-).fetchall()
-
-conn.close()
-
-print(f"=== CLIENTES DE AHORRO ({len(clientes)}) ===")
-for fila in clientes:
-    print(fila)
-
-print(f"\n=== CANDIDATOS AL EQUIPO ({len(candidatos)}) ===")
-for fila in candidatos:
-    print(fila)
-
-print(f"\n=== VIVIENDA: COMPRA / VENTA / ALQUILER ({len(inmuebles)}) ===")
-for fila in inmuebles:
-    print(fila)
+for titulo, tabla, campos in [
+    ("CLIENTES DE AHORRO", "contactos",
+     ["id", "fecha", "nombre", "telefono", "gasto_mensual", "idioma", "estado"]),
+    ("CANDIDATOS AL EQUIPO", "candidatos",
+     ["id", "fecha", "nombre", "telefono", "situacion", "idioma", "estado"]),
+    ("VIVIENDA: COMPRA / VENTA / ALQUILER", "inmuebles",
+     ["id", "fecha", "nombre", "telefono", "operacion", "zona", "idioma", "estado"]),
+]:
+    filas = database.leer_tabla(tabla)
+    print(f"=== {titulo} ({len(filas)}) ===")
+    for fila in filas:
+        print(" | ".join(str(fila.get(c, "")) for c in campos))
+    print()

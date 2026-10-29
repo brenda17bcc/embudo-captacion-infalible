@@ -16,8 +16,7 @@ import streamlit as st
 
 import config
 from estilos import obtener_paleta, css
-from database import (crear_tabla, guardar_contacto, guardar_candidato,
-                      guardar_inmueble)
+from database import guardar_contacto, guardar_candidato, guardar_inmueble
 from idiomas import IDIOMAS, PREFIJOS, CLAVES_SERVICIOS, SERVICIOS, t, servicios
 from idiomas_inmo import ti
 from companias import companias_de, ahorro_de
@@ -29,7 +28,8 @@ st.set_page_config(
     page_icon="🏡",
     layout="centered",
 )
-crear_tabla()
+# Nota: la base de datos NO se toca al abrir la página, para que cargue
+# al instante. Las tablas se comprueban solas al guardar el primer contacto.
 
 paleta = obtener_paleta(config.PALETA)
 
